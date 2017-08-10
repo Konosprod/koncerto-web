@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Koncerto - Edit</title>
+		<link href="/css/font-awesome.min.css" rel="stylesheet">
+		<link href="/css/bootstrap.min.css" rel="stylesheet">
+		<link href="/css/tether.min.css" rel="stylesheet">
+		<link href="/css/edit.css" rel="stylesheet">
+	</head>
+	<body>
+		<nav class="navbar fixed-top navbar-inverse bg-inverse">
+			<h1 class="navbar-brand mb-0">Koncerto</h1>
+		</nav>
+		<div class="container" style="padding-top: 70px; padding-bottom:70px;">
+			<form id="form-blindtest" method="post" data-id="{{ infos.id | default("-1") }}">
+				<div class="form-group">
+					<label for="title-test">Titre</label>
+					<input name="t" id="title-test" class="form-control" type="text" placeholder="Entrez le titre ici" value="{{ infos.title | default("") }}">
+				</div>
+				<div class="form-group">
+					<label for="id-owner">Numéro d'identifiant discord</label>
+					<a tabindex="0" class="btn btn-circle-micro btn-primary" role="button" data-toggle="popover" data-trigger="focus" title="Aide" 
+						data-content="Pour obtenir ce numéro, tapez &laquo; !id &raquo; dans un server ou se trouve le bot.">
+						<i class="fa fa-info" aria-hidden="true"></i>
+					</a>
+					<input name="oid" id="id-owner" class="form-control" type="text" placeholder="Entrez votre numéro discord ici" value="{{ infos.owner | default("") }}">
+				</div>
+				{% for entry in entries %}
+				<div class="form-group row">
+					<div class="col-sm-6">
+						<label for="u{{ loop.index0 }}">Url</label>
+						<input name="u{{ loop.index0 }}" class="form-control" placeholder="Url" type="text" value="{{ entry.url }}">
+					</div>
+					<div class="col-sm-6">
+						<label for="a{{ loop.index0 }}">Réponses</label>
+						<input name="a{{ loop.index0 }}" class="form-control" placeholder="Séparez les réponses par des virugles" type="text" value="{{ entry.answers }}">
+					</div>
+				</div>
+				{% endfor %}
+				<div id="entry" class="form-group row">
+					<div class="col-sm-6">
+						<label for="u{{ lastId | default("0") }}" >Url</label>
+						<input name="u{{ lastId | default("0") }}" id="url" class="form-control" placeholder="Url" type="text">
+					</div>
+					<div class="col-sm-6">
+						<label for="a{{ lastId | default("0") }}">Réponses</label>
+						<input name="a{{ lastId | default("0") }}" id="answer" class="form-control" placeholder="Séparez les réponses par des virgules" type="text">
+					</div>
+				</div>
+			</form>
+			<div class="text-center">
+				<button id="btn-add" class="btn btn-lg btn-primary btn-circle"><i class="fa fa-plus" aria-hidden="true"></i></button> 
+			</div>
+		</div>
+		<nav class="navbar fixed-bottom navbar-inverse bg-inverse">
+			<div class="col-10">
+				<button id="btn-cancel" class="btn btn-primary">Annuler</button>
+				<button id="btn-save" class="btn btn-primary">Sauver</button>
+			</div>
+		</nav>
+
+		<!-- Modal -->
+		{% include 'modal.twig' %}
+
+		<script src="/js/tether.min.js"></script>
+		<script src="/js/jquery-3.2.1.min.js"></script>
+		<script src="/js/bootstrap.min.js"></script>
+		<script>var lastId = {{ lastId | default("0") }};
+		$(function() {
+			$('[data-toggle="popover"]').popover();
+		});
+		</script>
+		<script src="/js/edit.js"></script>
+	</body>
+</html>
+

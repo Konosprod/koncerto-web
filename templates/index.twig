@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Koncerto</title>
+
+		<link href="/css/font-awesome.min.css" rel="stylesheet">
+		<link href="/css/tether.min.css" rel="stylesheet">
+		<link href="/css/bootstrap.min.css" rel="stylesheet">
+		<link href="/css/index.css" rel="stylesheet">
+	</head>
+
+	<body>
+		<div class="site-wrapper">
+			<div class="site-wrapper-inner">
+				<div class="cover-container">
+					<div class="masthead clearfix">
+						<div class="inner">
+							<h1 class="masthead-brand">Koncerto</h1>
+						</div>
+					</div>
+					<div class="inner cover">
+						<h3 class="cover-heading">Koncerto</h3>
+						<p class="lead">Créez votre propre blind-test pour votre discord !</p>
+						<hr class="my-4">
+						<button id="new-test" type="button" class="btn btn-primary btn-lg">
+							<i class="fa fa-plus" aria-hidden="true"></i> Nouveau
+						</button>
+						<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#edit-modal">
+							<i class="fa fa-pencil" aria-hidden="true"></i> Editer
+						</button>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Modal -->
+		<div id="edit-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="edit-modal-titre" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="edit-modal-titre">Editer</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Fermer">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<label for="id-blindtest" class="form-control-label">Identifiant Blindtest</label>
+							<input type="text" class="form-control" id="id-blindtest">
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" data-dismiss="modal">Fermer</button>
+						<button type="button" class="btn btn-primary" id="edit-confirm">Editer</button>
+					</div>
+				</div>
+			</div>
+		</div>		
+
+		<script src="/js/tether.min.js"></script>
+		<script src="/js/jquery-3.2.1.min.js"></script>
+		<script src="/js/bootstrap.min.js"></script>
+		<script src="/js/index.js"></script>
+	</body>
+</html>
+
